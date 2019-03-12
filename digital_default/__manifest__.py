@@ -41,7 +41,8 @@
     'port': '8069',
 
     'repos': [
-        {'usr': 'ntsystemwork', 'repo': 'cl-digital', 'branch': '11.0'},
+        {'usr': 'ntsystemwork', 'repo': 'cl-digital', 'branch': '11.0',
+         'ssh': True},
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
 
         {'usr': 'jobiols', 'repo': 'adhoc-odoo-argentina', 'branch': '11.0'},
@@ -59,10 +60,10 @@
         {'usr': 'jobiols', 'repo': 'oca-server-tools', 'branch': '11.0'},
     ],
     'docker': [
-        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-ent', 'ver': '11.0e'},
+        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-ent',
+         'ver': '11.0e'},
         {'name': 'postgres', 'usr': 'postgres', 'ver': '11.1-alpine'},
         {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'},
         {'name': 'aeroo', 'usr': 'adhoc', 'img': 'aeroo-docs'},
     ],
 }
-
