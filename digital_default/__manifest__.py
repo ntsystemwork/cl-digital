@@ -5,11 +5,11 @@
 #
 # -----------------------------------------------------------------------------
 {
-    'name': 'scaffolding',
-    'version': '11.0.0.0.0',
+    'name': 'digital',
+    'version': '11.0e.0.0.0',
     'license': 'Other OSI approved licence',
     'category': 'Tools',
-    'summary': 'Customizacion para scaffolding',
+    'summary': 'Customizacion para digital',
     'author': 'NT System Work',
     'depends': [
         # basic applications
@@ -20,8 +20,6 @@
         # minimum modules for argentinian localizacion + utilities + fixes
         'standard_depends',
 
-        # utilitarios adicionales
-        'backend_theme',
     ],
     'data': [
     ],
@@ -43,10 +41,8 @@
     'port': '8069',
 
     'repos': [
-        {'usr': 'ntsystemwork', 'repo': 'cl-scaffolding', 'branch': '11.0'},
+        {'usr': 'ntsystemwork', 'repo': 'cl-digital', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
-        {'usr': 'jobiols', 'repo': 'rafi16jan-backend-theme',
-         'branch': '11.0'},
 
         {'usr': 'jobiols', 'repo': 'adhoc-odoo-argentina', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-argentina-sale', 'branch': '11.0'},
@@ -63,26 +59,10 @@
         {'usr': 'jobiols', 'repo': 'oca-server-tools', 'branch': '11.0'},
     ],
     'docker': [
-        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
+        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-ent', 'ver': '11.0e'},
         {'name': 'postgres', 'usr': 'postgres', 'ver': '11.1-alpine'},
         {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'},
         {'name': 'aeroo', 'usr': 'adhoc', 'img': 'aeroo-docs'},
     ],
-
-    # example repos version 2
-    # Note that the branch of the repo to download is taken from the module
-    # version
-    'git-repos': [
-        'https://github.com/jobiols/cl-scaffolding.git',
-        'https://github.com/jobiols/odoo-addons.git',
-        'https://github.com/jobiols/adhoc-odoo-argentina.git',
-    ],
-
-    # example images version 2
-    'docker-images': [
-        {'img': 'jobiols/odoo-jeo:11.0', 'name': 'odoo'},
-        {'img': 'postgres:11.1-alpine', 'name': 'postgres'},
-        {'img': 'adhoc/aeroo', 'name': 'aeroo'},
-    ]
 }
 
