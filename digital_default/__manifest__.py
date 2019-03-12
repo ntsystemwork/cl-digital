@@ -58,6 +58,7 @@
         {'usr': 'jobiols', 'repo': 'oca-partner-contact', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-web', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-server-tools', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'oca-social', 'branch': '11.0'},
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-ent',
