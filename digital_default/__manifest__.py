@@ -18,7 +18,7 @@
         'purchase',
 
         # minimum modules for argentinian localizacion + utilities + fixes
-        'standard_depends',
+        'standard_depends_ee',
 
     ],
     'data': [
