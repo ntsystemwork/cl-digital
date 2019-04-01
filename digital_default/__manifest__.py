@@ -50,6 +50,7 @@
         {'usr': 'jobiols', 'repo': 'adhoc-account-financial-tools',
          'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-account-payment', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'adhoc-product', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-miscellaneous', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-argentina-reporting',
          'branch': '11.0'},
