@@ -20,6 +20,10 @@
         # minimum modules for argentinian localizacion + utilities + fixes
         'standard_depends_ee',
 
+        # exportacion de retenciones y percepciones automaticas.
+        'l10n_ar_export_arba',
+        'l10n_ar_export_sicore',
+
     ],
     'data': [
     ],
