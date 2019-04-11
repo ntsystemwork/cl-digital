@@ -23,6 +23,7 @@
         # exportacion de retenciones y percepciones automaticas.
         'l10n_ar_export_arba',
         'l10n_ar_export_sicore',
+        'woo_commerce_ept'
 
     ],
     'data': [
