@@ -24,6 +24,8 @@
         'l10n_ar_export_arba',
         'l10n_ar_export_sicore',
 
+        'cash_flow',  # actualizar cash flow
+
     ],
     'data': [
     ],
