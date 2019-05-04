@@ -53,6 +53,7 @@
 
         {'usr': 'jobiols', 'repo': 'adhoc-odoo-argentina', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-argentina-sale', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'adhoc-sale', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-account-financial-tools',
          'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-account-payment', 'branch': '11.0'},
@@ -66,6 +67,7 @@
         {'usr': 'jobiols', 'repo': 'oca-web', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-server-tools', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-social', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'oca-sale-workflow', 'branch': '11.0'},
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-ent',
