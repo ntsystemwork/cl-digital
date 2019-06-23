@@ -49,6 +49,9 @@
     'repos': [
         {'usr': 'ntsystemwork', 'repo': 'cl-digital', 'branch': '11.0',
          'ssh': True},
+        {'usr': 'ntsystemwork', 'repo': 'common-addons', 'branch': '11.0',
+         'ssh': True},
+
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
 
         {'usr': 'jobiols', 'repo': 'adhoc-odoo-argentina', 'branch': '11.0'},
@@ -63,6 +66,7 @@
          'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-reporting-engine', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-aeroo_reports', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'adhoc-partner', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-partner-contact', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-web', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'oca-server-tools', 'branch': '11.0'},
