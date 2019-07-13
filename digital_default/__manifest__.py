@@ -20,6 +20,9 @@
         # minimum modules for argentinian localizacion + utilities + fixes
         'standard_depends_ee',
 
+        # restringir la creacion de productos
+        'product_create_restriction',
+
         # exportacion de retenciones y percepciones automaticas.
         'l10n_ar_export_arba',
         'l10n_ar_export_sicore',
