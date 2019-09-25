@@ -50,7 +50,7 @@
         {'usr': 'ntsystemwork', 'repo': 'cl-digital', 'branch': '11.0',
          'ssh': True},
 
-        {'usr': 'gcaceres93', 'repo': 'project_stock', 'branch': 'master',
+        {'usr': 'gcaceres93', 'repo': 'project_stock', 'branch': '11.0',
          'ssh': True, 'host': 'github.com-sati'},
         {'usr': 'gcaceres93', 'repo': 'fd', 'branch': 'master',
          'ssh': True, 'host': 'github.com-sati'},
