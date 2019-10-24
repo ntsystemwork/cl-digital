@@ -52,7 +52,7 @@
 
         {'usr': 'gcaceres93', 'repo': 'project_stock', 'branch': '11.0',
          'ssh': True, 'host': 'github.com-sati'},
-        {'usr': 'gcaceres93', 'repo': 'fd', 'branch': 'master',
+        {'usr': 'gcaceres93', 'repo': 'fd', 'branch': '11.0',
          'ssh': True, 'host': 'github.com-sati'},
 
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
