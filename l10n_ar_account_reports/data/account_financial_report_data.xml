@@ -255,13 +255,13 @@
             <field name="name">RESULTADO ANTES DE IMPUESTO</field>
             <field name="code">RAIM</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 300</field>
+            <field name="formulas">balance = GBRU.balance - GADM.balance - GCOM.balance - RFTE.balance + OTIN.balance</field>
             <field name="sequence" eval="120"/>
             <field name="level" eval="0" />
         </record>
             <!-- gastos de administracion - - - - - - - - - - - - - - - - - -->
         <record id="account_financial_report_gadm" model="account.financial.html.report.line">
-            <field name="name">Gastos de Administración</field>
+            <field name="name">Menos Gastos de Administración</field>
             <field name="code">GADM</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
@@ -272,7 +272,7 @@
         </record>
             <!-- gastos de comercializacion - - - - - - - - - - - - - - - - -->
         <record id="account_financial_report_gcom" model="account.financial.html.report.line">
-            <field name="name">Gastos de Comercialización</field>
+            <field name="name">Menos Gastos de Comercialización</field>
             <field name="code">GCOM</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
@@ -283,7 +283,7 @@
         </record>
             <!-- resultados finacieros y por tenencia - - - - - - - - - - - -->
         <record id="account_financial_report_rfte" model="account.financial.html.report.line">
-            <field name="name">Resultados Financieros y por Tenencia</field>
+            <field name="name">Menos Resultados Financieros y por Tenencia</field>
             <field name="code">RFTE</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
@@ -295,7 +295,7 @@
 
         <!-- otros ingresos - - - - - - - - - - - - - - - - - - - - - - - - -->
         <record id="account_financial_report_otin" model="account.financial.html.report.line">
-            <field name="name">Otros Ingresos</field>
+            <field name="name">Mas Otros Ingresos</field>
             <field name="code">OTIN</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
@@ -320,7 +320,7 @@
             <field name="name">GANANCIA DEL EJERCICIO</field>
             <field name="code">GANEJ</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 300</field>
+            <field name="formulas">balance = RAIM.balance - IGAN.balance</field>
             <field name="sequence" eval="140"/>
             <field name="level" eval="0" />
         </record>
