@@ -115,7 +115,7 @@
             <field name="name">PASIVO</field>
             <field name="code">PASI</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 202</field>
+            <field name="formulas">balance = PASCO.balance + PNOC.balance</field>
             <field name="sequence" eval="20"/>
             <field name="level" eval="0" />
         </record>
@@ -124,7 +124,7 @@
             <field name="name">Pasivo Corriente</field>
             <field name="code">PASCO</field>
             <field name="parent_id" ref='account_financial_report_pasivo'/>
-            <field name="formulas">balance = 10</field>
+            <field name="formulas">balance = DCOM.balance + DSOC.balance + DFISC.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="1" />
         </record>
@@ -132,7 +132,7 @@
             <field name="name">Deudas Comerciales</field>
             <field name="code">DCOM</field>
             <field name="parent_id" ref='account_financial_report_pasco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="['|',('account_id.user_type_id', '=', 9),('account_id.user_type_id', '=', 2)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="10"/>
@@ -142,7 +142,7 @@
             <field name="name">Deudas Sociales</field>
             <field name="code">DSOC</field>
             <field name="parent_id" ref='account_financial_report_pasco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 10)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="20"/>
@@ -152,7 +152,7 @@
             <field name="name">Deudas Fiscales</field>
             <field name="code">DFISC</field>
             <field name="parent_id" ref='account_financial_report_pasco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 18)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="30"/>
@@ -163,15 +163,15 @@
             <field name="name">Pasivo no Corriente</field>
             <field name="code">PNOC</field>
             <field name="parent_id" ref='account_financial_report_pasivo'/>
-            <field name="formulas">balance = 10</field>
+            <field name="formulas">balance = ODEUNOC.balance + DFISNOC.balance</field>
             <field name="sequence" eval="20"/>
             <field name="level" eval="1" />
         </record>
-        <record id="account_financial_report_odeu" model="account.financial.html.report.line">
+        <record id="account_financial_report_odeunoc" model="account.financial.html.report.line">
             <field name="name">Otras Deudas</field>
-            <field name="code">ODEU</field>
+            <field name="code">ODEUNOC</field>
             <field name="parent_id" ref='account_financial_report_pnoc'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 19)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="10"/>
@@ -179,9 +179,9 @@
         </record>
         <record id="account_financial_report_dfisnc" model="account.financial.html.report.line">
             <field name="name">Deudas Fiscales</field>
-            <field name="code">DFISNC</field>
+            <field name="code">DFISNOC</field>
             <field name="parent_id" ref='account_financial_report_pnoc'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 18)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="20"/>
