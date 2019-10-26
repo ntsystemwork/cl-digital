@@ -210,7 +210,7 @@
 
         <!-- total pasivo y patrimonio neto - - - - - - - - - - - - - - - - -->
         <record id="account_financial_report_tppn" model="account.financial.html.report.line">
-            <field name="name">Total Pasivo y Patrimonio Neto</field>
+            <field name="name">TOTAL PASIVO Y PATRIMONIO NETO</field>
             <field name="code">TPPN</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
             <field name="formulas">balance = PASI.balance + PNET.balance</field>
@@ -232,9 +232,9 @@
             <field name="name">Ventas Netas</field>
             <field name="code">VNET</field>
             <field name="parent_id" ref='account_financial_report_gbru'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="['|',('account_id.code', '=', '4.1.01.00.010'),('account_id.code', '=', '4.1.01.00.020')]" />
             <field name="groupby">account_id</field>
-            <field name="formulas">balance = 1001</field>
+            <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="2" />
         </record>
@@ -243,9 +243,9 @@
             <field name="name">Menos Costo de Mercaderias Vendidas</field>
             <field name="code">CMVE</field>
             <field name="parent_id" ref='account_financial_report_gbru'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 17)]" />
             <field name="groupby">account_id</field>
-            <field name="formulas">balance = 203</field>
+            <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="20"/>
             <field name="level" eval="2" />
         </record>
@@ -264,9 +264,9 @@
             <field name="name">Menos Gastos de Administración</field>
             <field name="code">GADM</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="['|',('account_id.user_type_id', '=', 22),('account_id.user_type_id', '=', 15)]" />
             <field name="groupby">account_id</field>
-            <field name="formulas">balance = 301</field>
+            <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="2" />
         </record>
@@ -275,9 +275,9 @@
             <field name="name">Menos Gastos de Comercialización</field>
             <field name="code">GCOM</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 23)]" />
             <field name="groupby">account_id</field>
-            <field name="formulas">balance = 302</field>
+            <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="20"/>
             <field name="level" eval="2" />
         </record>
@@ -286,9 +286,9 @@
             <field name="name">Menos Resultados Financieros y por Tenencia</field>
             <field name="code">RFTE</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 25)]" />
             <field name="groupby">account_id</field>
-            <field name="formulas">balance = 302</field>
+            <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="30"/>
             <field name="level" eval="2" />
         </record>
@@ -298,9 +298,9 @@
             <field name="name">Mas Otros Ingresos</field>
             <field name="code">OTIN</field>
             <field name="parent_id" ref='account_financial_report_raim'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 13)]" />
             <field name="groupby">account_id</field>
-            <field name="formulas">balance = 303</field>
+            <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="40"/>
             <field name="level" eval="2" />
         </record>
@@ -310,9 +310,19 @@
             <field name="name">Impuesto a las Ganancias (Nota 1.3.g)</field>
             <field name="code">IGAN</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 300</field>
+            <field name="formulas">balance = IGAN_C.balance</field>
             <field name="sequence" eval="130"/>
             <field name="level" eval="0" />
+        </record>
+        <record id="account_financial_report_igan_c" model="account.financial.html.report.line">
+            <field name="name">Impuesto a las ganancias</field>
+            <field name="code">IGAN_C</field>
+            <field name="parent_id" ref='account_financial_report_igan'/>
+            <field name="domain" eval="[('account_id.code', '=', '4.5.00.00.010')]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="2" />
         </record>
 
         <!-- ganancia del ejercicio - - - - - - - - - - - - - - - - - - - - -->
