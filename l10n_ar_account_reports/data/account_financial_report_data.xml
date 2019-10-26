@@ -17,7 +17,7 @@
             <field name="name">ACTIVO</field>
             <field name="code">ACTI</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 100</field>
+            <field name="formulas">balance = ACTCO.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="0" />
         </record>
@@ -26,7 +26,7 @@
             <field name="name">Activo Corriente</field>
             <field name="code">ACTCO</field>
             <field name="parent_id" ref='account_financial_report_acti'/>
-            <field name="formulas">balance = 10</field>
+            <field name="formulas">balance = CBACO.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="1" />
         </record>
@@ -40,6 +40,13 @@
             <field name="sequence" eval="10"/>
             <field name="level" eval="2" />
         </record>
+
+
+
+
+
+
+
         <record id="account_financial_report_cveco" model="account.financial.html.report.line">
             <field name="name">Créditos por ventas</field>
             <field name="code">CVECO</field>
