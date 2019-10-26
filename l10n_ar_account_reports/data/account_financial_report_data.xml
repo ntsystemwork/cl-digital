@@ -26,7 +26,7 @@
             <field name="name">Activo Corriente</field>
             <field name="code">ACTCO</field>
             <field name="parent_id" ref='account_financial_report_acti'/>
-            <field name="formulas">balance = CBACO.balance</field>
+            <field name="formulas">balance = CBACO.balance + CVECO.balance + OCCO.balance + BCCO.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="1" />
         </record>
@@ -34,24 +34,17 @@
             <field name="name">Caja y Bancos</field>
             <field name="code">CBACO</field>
             <field name="parent_id" ref='account_financial_report_actco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 3)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="10"/>
             <field name="level" eval="2" />
         </record>
-
-
-
-
-
-
-
         <record id="account_financial_report_cveco" model="account.financial.html.report.line">
             <field name="name">Créditos por ventas</field>
             <field name="code">CVECO</field>
             <field name="parent_id" ref='account_financial_report_actco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 4)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="20"/>
@@ -61,7 +54,7 @@
             <field name="name">Otros Créditos</field>
             <field name="code">OCCO</field>
             <field name="parent_id" ref='account_financial_report_actco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 5)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="30"/>
@@ -71,7 +64,7 @@
             <field name="name">Bienes de Cambio</field>
             <field name="code">BCCO</field>
             <field name="parent_id" ref='account_financial_report_actco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 6)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="40"/>
@@ -81,7 +74,7 @@
             <field name="name">Inversiones</field>
             <field name="code">INVCO</field>
             <field name="parent_id" ref='account_financial_report_actco'/>
-            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="domain" eval="[('account_id.user_type_id', '=', 7)]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
             <field name="sequence" eval="50"/>
