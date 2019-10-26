@@ -3,7 +3,6 @@
     <data>
 
         <!-- ARGENTINE BALANCE SHEET -->
-
         <record id="account_financial_report_balance_l10n_ar" model="account.financial.html.report">
             <field name="name">Balance Argentino</field>
             <field name="debit_credit" eval="False"/>
@@ -13,104 +12,307 @@
             <field name='parent_id' ref='account.account_reports_legal_statements_menu'/>
         </record>
 
-        <record id="account_financial_report_total_act" model="account.financial.html.report.line">
+        <!-- activo - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_acti" model="account.financial.html.report.line">
             <field name="name">ACTIVO</field>
-            <field name="code">ACT</field>
+            <field name="code">ACTI</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
             <field name="formulas">balance = 100</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="10"/>
             <field name="level" eval="0" />
         </record>
-        <record id="account_financial_report_aco" model="account.financial.html.report.line">
+                <!-- activo corriente - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_actco" model="account.financial.html.report.line">
             <field name="name">Activo Corriente</field>
-            <field name="code">ACO</field>
-            <field name="parent_id" ref='account_financial_report_total_act'/>
+            <field name="code">ACTCO</field>
+            <field name="parent_id" ref='account_financial_report_acti'/>
             <field name="formulas">balance = 10</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="10"/>
             <field name="level" eval="1" />
         </record>
-        <record id="account_financial_report_cba" model="account.financial.html.report.line">
+        <record id="account_financial_report_cbaco" model="account.financial.html.report.line">
             <field name="name">Caja y Bancos</field>
-            <field name="code">CBA</field>
-            <field name="parent_id" ref='account_financial_report_aco'/>
+            <field name="code">CBACO</field>
+            <field name="parent_id" ref='account_financial_report_actco'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_cveco" model="account.financial.html.report.line">
+            <field name="name">Créditos por ventas</field>
+            <field name="code">CVECO</field>
+            <field name="parent_id" ref='account_financial_report_actco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_occo" model="account.financial.html.report.line">
+            <field name="name">Otros Créditos</field>
+            <field name="code">OCCO</field>
+            <field name="parent_id" ref='account_financial_report_actco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="30"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_bcco" model="account.financial.html.report.line">
+            <field name="name">Bienes de Cambio</field>
+            <field name="code">BCCO</field>
+            <field name="parent_id" ref='account_financial_report_actco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="40"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_invco" model="account.financial.html.report.line">
+            <field name="name">Inversiones</field>
+            <field name="code">INVCO</field>
+            <field name="parent_id" ref='account_financial_report_actco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="50"/>
+            <field name="level" eval="2" />
+        </record>
+                <!-- activo no corriente - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_anoco" model="account.financial.html.report.line">
+            <field name="name">Activo no Corriente</field>
+            <field name="code">ANOCO</field>
+            <field name="parent_id" ref='account_financial_report_acti'/>
+            <field name="formulas">balance = 10</field>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_bunoco" model="account.financial.html.report.line">
+            <field name="name">Bienes de Uso</field>
+            <field name="code">BUNOCO</field>
+            <field name="parent_id" ref='account_financial_report_anoco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_invnoco" model="account.financial.html.report.line">
+            <field name="name">Inversiones</field>
+            <field name="code">INVNOCO</field>
+            <field name="parent_id" ref='account_financial_report_anoco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="20"/>
             <field name="level" eval="2" />
         </record>
 
-        <record id="account_financial_report_total_pas" model="account.financial.html.report.line">
+        <!-- pasivo - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_pasivo" model="account.financial.html.report.line">
             <field name="name">PASIVO</field>
-            <field name="code">PAS</field>
+            <field name="code">PASI</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
             <field name="formulas">balance = 200</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="20"/>
             <field name="level" eval="0" />
         </record>
-        <record id="account_financial_report_pco" model="account.financial.html.report.line">
+            <!-- pasivo corriente - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_pasco" model="account.financial.html.report.line">
             <field name="name">Pasivo Corriente</field>
-            <field name="code">PCO</field>
-            <field name="parent_id" ref='account_financial_report_total_pas'/>
+            <field name="code">PASCO</field>
+            <field name="parent_id" ref='account_financial_report_pasivo'/>
             <field name="formulas">balance = 10</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="10"/>
             <field name="level" eval="1" />
         </record>
         <record id="account_financial_report_dcom" model="account.financial.html.report.line">
             <field name="name">Deudas Comerciales</field>
             <field name="code">DCOM</field>
-            <field name="parent_id" ref='account_financial_report_pco'/>
+            <field name="parent_id" ref='account_financial_report_pasco'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="20"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_dsoc" model="account.financial.html.report.line">
+            <field name="name">Deudas Sociales</field>
+            <field name="code">DSOC</field>
+            <field name="parent_id" ref='account_financial_report_pasco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="30"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_dfisc" model="account.financial.html.report.line">
+            <field name="name">Deudas Fiscales</field>
+            <field name="code">DFISC</field>
+            <field name="parent_id" ref='account_financial_report_pasco'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="40"/>
+            <field name="level" eval="2" />
+        </record>
+            <!-- pasivo no corriente  - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_pnoc" model="account.financial.html.report.line">
+            <field name="name">Pasivo no Corriente</field>
+            <field name="code">PNOC</field>
+            <field name="parent_id" ref='account_financial_report_pasivo'/>
+            <field name="formulas">balance = 10</field>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="1" />
+        </record>
+        <record id="account_financial_report_odeu" model="account.financial.html.report.line">
+            <field name="name">Otras Deudas</field>
+            <field name="code">ODEU</field>
+            <field name="parent_id" ref='account_financial_report_pnoc'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="level" eval="2" />
+        </record>
+        <record id="account_financial_report_dfis" model="account.financial.html.report.line">
+            <field name="name">Deudas Fiscales</field>
+            <field name="code">DFIS</field>
+            <field name="parent_id" ref='account_financial_report_pnoc'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="20"/>
             <field name="level" eval="2" />
         </record>
 
-        <record id="account_financial_report_total_pane" model="account.financial.html.report.line">
+        <!-- patrimonio neto  - - - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_pnet" model="account.financial.html.report.line">
             <field name="name">PATRIMONIO NETO</field>
-            <field name="code">PANE</field>
+            <field name="code">PNET</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
             <field name="formulas">balance = 300</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="30"/>
             <field name="level" eval="0" />
         </record>
-        <record id="account_financial_report_capital" model="account.financial.html.report.line">
-            <field name="name">Capital</field>
-            <field name="code">CAPITAL</field>
-            <field name="parent_id" ref='account_financial_report_total_pane'/>
+
+        <!-- total pasivo y patrimonio neto - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_tppn" model="account.financial.html.report.line">
+            <field name="name">Total Pasivo y Patrimonio Neto</field>
+            <field name="code">TPPN</field>
+            <field name="parent_id" ref='account_financial_report_balance_l10n_ar'/>
             <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
             <field name="groupby">account_id</field>
             <field name="formulas">balance = sum.balance</field>
-            <field name="sequence" eval="1"/>
-            <field name="level" eval="1" />
+            <field name="sequence" eval="40"/>
+            <field name="level" eval="0" />
         </record>
 
-        <record id="account_financial_report_gabru" model="account.financial.html.report.line">
+        <!-- ventas netas - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_vnet" model="account.financial.html.report.line">
+            <field name="name">Ventas Netas</field>
+            <field name="code">VNET</field>
+            <field name="parent_id" ref='account_financial_report_balance_l10n_ar'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="50"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- costo de mercaderias vendidas- - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_cmve" model="account.financial.html.report.line">
+            <field name="name">Costo de Mercaderias Vendidas</field>
+            <field name="code">CMVE</field>
+            <field name="parent_id" ref='account_financial_report_balance_l10n_ar'/>
+            <field name="domain" eval="[('account_id.user_type_id', '=', ref('account.data_account_type_liquidity'))]" />
+            <field name="groupby">account_id</field>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="sequence" eval="60"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- ganancia bruta - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_gbru" model="account.financial.html.report.line">
             <field name="name">GANANCIA BRUTA</field>
-            <field name="code">GABRU</field>
+            <field name="code">GBRU</field>
             <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
             <field name="formulas">balance = 300</field>
-            <field name="sequence" eval="1"/>
-            <field name="level" eval="0" />
-        </record>
-        <record id="account_financial_report_rai" model="account.financial.html.report.line">
-            <field name="name">RESULTADO ANTES DEL IMPUESTO</field>
-            <field name="code">RAI</field>
-            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 300</field>
-            <field name="sequence" eval="1"/>
-            <field name="level" eval="0" />
-        </record>
-        <record id="account_financial_report_ganeje" model="account.financial.html.report.line">
-            <field name="name">GANANCIA DEL EJERCICIO</field>
-            <field name="code">GANEJE</field>
-            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
-            <field name="formulas">balance = 300</field>
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="60"/>
             <field name="level" eval="0" />
         </record>
 
+        <!-- gastos de administracion - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_gadm" model="account.financial.html.report.line">
+            <field name="name">GASTOS DE ADMINISTRACION</field>
+            <field name="code">GADM</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="80"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- gastos de comercializacion - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_gcom" model="account.financial.html.report.line">
+            <field name="name">GASTOS DE COMERCIALIZACION</field>
+            <field name="code">GCOM</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="90"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- resultados finacieros por tenencia - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_rfte" model="account.financial.html.report.line">
+            <field name="name">RESULTADOS FINANCIEROS POR TENENCIA</field>
+            <field name="code">RFTE</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="100"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- otros ingresos - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_otin" model="account.financial.html.report.line">
+            <field name="name">OTROS INGRESOS</field>
+            <field name="code">OTIN</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="110"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- resultado antes del impuesto - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_raim" model="account.financial.html.report.line">
+            <field name="name">RESULTADO ANTES DE IMPUESTO</field>
+            <field name="code">RAIM</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="120"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- impuesto a las ganancias (Nota 1.3.g)- - - - - - - - - - - - - -->
+        <record id="account_financial_report_igan" model="account.financial.html.report.line">
+            <field name="name">IMPUESTO A LAS GANANCIAS (NOTA 1.3.G)</field>
+            <field name="code">IGAN</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="130"/>
+            <field name="level" eval="0" />
+        </record>
+
+        <!-- ganancia del ejercicio - - - - - - - - - - - - - - - - - - - - -->
+        <record id="account_financial_report_ganej" model="account.financial.html.report.line">
+            <field name="name">GANANCIA DEL EJERCICIO</field>
+            <field name="code">GANEJ</field>
+            <field name="financial_report_id" ref="account_financial_report_balance_l10n_ar"/>
+            <field name="formulas">balance = 300</field>
+            <field name="sequence" eval="140"/>
+            <field name="level" eval="0" />
+        </record>
 
     </data>
 </odoo>
