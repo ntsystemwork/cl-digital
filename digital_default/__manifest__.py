@@ -69,6 +69,7 @@
         {'usr': 'ingadhoc', 'repo': 'aeroo_reports', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'partner', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-invoicing', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'stock', 'branch': '11.0'},
 
         {'usr': 'oca', 'repo': 'partner-contact', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'web', 'branch': '11.0'},
@@ -76,6 +77,7 @@
         {'usr': 'oca', 'repo': 'social', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'sale-workflow', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'server-ux', 'branch': '11.0'},
+        {'usr': 'oca', 'repo': 'queue', 'branch': '11.0'},
 
     ],
     'docker': [
