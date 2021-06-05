@@ -55,6 +55,7 @@ services:
       - ${PROJECT_PATH}/backup_dir:/var/odoo/backups/
     links:
       - postgres:db
+      - aeroo:aeroo
     environment:
       - SERVER_MODE=
     labels:
@@ -98,3 +99,7 @@ services:
       # redirecciona rout-chat-secure al puerto 8072 donde odoo escucha el longpolling
       - traefik.http.routers.rou-chat-secure.service=srv-chat-secure
       - traefik.http.services.srv-chat-secure.loadbalancer.server.port=8072
+
+      aeroo:
+        image: adhoc/aeroo-docs
+        container_name: aeroo
