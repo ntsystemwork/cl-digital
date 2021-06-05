@@ -100,6 +100,6 @@ services:
       - traefik.http.routers.rou-chat-secure.service=srv-chat-secure
       - traefik.http.services.srv-chat-secure.loadbalancer.server.port=8072
 
-      aeroo:
-        image: adhoc/aeroo-docs
-        container_name: aeroo
+  aeroo:
+    image: adhoc/aeroo-docs
+    container_name: aeroo
