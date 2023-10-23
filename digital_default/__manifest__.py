@@ -51,9 +51,9 @@
          'ssh': True},
 
         {'usr': 'gcaceres93', 'repo': 'project_stock', 'branch': '11.0',
-         'ssh': True, 'host': 'github.com-sati'},
+         'ssh': True, 'host': 'github.com'},
         {'usr': 'gcaceres93', 'repo': 'fd', 'branch': '11.0',
-         'ssh': True, 'host': 'github.com-sati'},
+         'ssh': True, 'host': 'github.com'},
 
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
 
